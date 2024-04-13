@@ -1,36 +1,27 @@
-import {Pessoa} from "./pessoa.js";
-
+import { Pessoa } from "./pessoa.js";
 export class Funcionario extends Pessoa {
-    private salario: number;
-    private cargo: string[] = [];
-
-    constructor(nome: string, cpf: string, telefone: string, cargo: string, salario: number) {
+    constructor(nome, cpf, telefone, cargo, salario) {
         super(nome, cpf, telefone);
+        this.cargo = [];
         this.adicionarCargo(cargo);
         this.salario = salario;
     }
-
-    public get Salario(): number {
+    get Salario() {
         return this.salario;
     }
-
-    public set Salario(salario: number) {
+    set Salario(salario) {
         this.salario = salario;
     }
-
-    public get Cargo(): string[] {
+    get Cargo() {
         return this.cargo;
     }
-
-    public set Cargo(cargo: string[]) {
+    set Cargo(cargo) {
         this.cargo = cargo;
     }
-
-    public adicionarCargo(cargo: string): void {
+    adicionarCargo(cargo) {
         this.cargo.push(cargo);
     }
-
-    public listarCargos(): void {
+    listarCargos() {
         console.log('Cargos do funcionário: ');
         this.cargo.forEach(cargo => {
             console.log(cargo);

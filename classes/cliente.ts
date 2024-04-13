@@ -1,15 +1,14 @@
-import {Pessoa} from "./pessoa";
-import {Endereco} from "./endereco";
+import {Pessoa} from "./pessoa.js";
+import {Endereco} from "./endereco.js";
 
 export class Cliente extends Pessoa implements IUsuario {
     private vip: boolean;
     private enderecos: Endereco[] = [];
+    clientes: any;
 
-    constructor(nome: string, cpf: string) {
-        super();
-        this.Nome = nome;
-        this.Cpf = cpf;
-
+    constructor(nome: string, cpf: string, telefone: string) {
+        super(nome, cpf, telefone);
+        this.vip = false;
     }
 
     public get Vip(): boolean {
@@ -28,10 +27,10 @@ export class Cliente extends Pessoa implements IUsuario {
         this.enderecos = enderecos;
     }
 
-    autenticar(): boolean {
-        console.log('Autenticando cliente...');
+    autenticar() {
         return true;
     }
+    
 
     public adicionarEndereco(endereco: Endereco): void {
         this.enderecos.push(endereco);

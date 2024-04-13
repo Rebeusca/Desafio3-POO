@@ -1,50 +1,41 @@
-import {Conta} from "./conta.js";
-
+import { Conta } from "./conta.js";
 export class ContaCorrente extends Conta {
-    private limite: number;
-
-    constructor(numero: number, saldo: number, limite: number) {
+    constructor(numero, saldo, limite) {
         super(numero, saldo);
         this.limite = limite;
     }
-
-    public get Limite(): number {
+    get Limite() {
         return this.limite;
     }
-
-    public set Limite(limite: number) {
+    set Limite(limite) {
         this.limite = limite;
     }
-
-    public get Saldo(): number {
+    get Saldo() {
         return super.Saldo;
     }
-
-    public set Saldo(saldo: number) {
+    set Saldo(saldo) {
         super.Saldo = saldo;
     }
-
     // Método transferir:
     // verifica se a conta de origem possui saldo suficiente para a transferência e
     // realiza a transferência para a conta de destino.
-    public transferir(contaDestino: Conta, valor: number): void {
+    transferir(contaDestino, valor) {
         if (valor <= this.Saldo + Number(this.Limite)) {
             this.Saldo -= valor;
             contaDestino.Saldo += valor;
             console.log('Transferência efetuada com sucesso!');
-        } else {
+        }
+        else {
             console.log('Saldo insuficiente para transferência.');
         }
     }
-
     // Método calcularSaldo:
     // retorna a soma de todos os créditos e subitraído pela soma de
     // todos os débitos. Após, soma o valor do limite. Ao final, retorna o valor.
-    public calcularSaldoCorrente(): number {
+    calcularSaldoCorrente() {
         return this.Saldo;
     }
-
-    public definirLimite(limite: number): void {
+    definirLimite(limite) {
         this.Limite = limite;
     }
 }

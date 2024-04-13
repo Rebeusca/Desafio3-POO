@@ -1,92 +1,73 @@
-export abstract class Conta {
-    private numero: number;
-    private saldo: number;
-
-    constructor(numero: number, saldo: number) {
+export class Conta {
+    constructor(numero, saldo) {
         this.numero = numero;
         this.saldo = saldo;
     }
-
-    get Numero(): number {
+    get Numero() {
         return this.numero;
     }
-
-    set Numero(numero: number) {
+    set Numero(numero) {
         this.numero = numero;
     }
-
-    get Saldo(): number {
+    get Saldo() {
         return this.saldo;
     }
-
-    set Saldo(saldo: number) {
+    set Saldo(saldo) {
         this.saldo = saldo;
     }
-
     // Método sacar:
     // cria um objeto do tipo Debito vinculado à conta que está sofrendo o saque.
-    public sacar(valor: number): void {
+    sacar(valor) {
         if (valor <= this.saldo) {
             const debito = new Debito(this);
             debito.executar(valor);
             console.log('Saque efetuado com sucesso!\n');
-        } else {
+        }
+        else {
             console.log('Saldo insuficiente para saque.\n');
         }
     }
-
     // Método depositar:
     // cria um objeto do tipo Credito vinculado à conta que está recebendo o depósito.
-    public depositar(valor: number): void {
+    depositar(valor) {
         const credito = new Credito(this);
         credito.executar(valor);
         console.log('Depósito efetuado com sucesso!\n');
     }
-
-    public consultarSaldo(): void {
+    consultarSaldo() {
         console.log(`Saldo atual: R$ ${this.saldo}\n`);
     }
 }
-
-// Interface para operações de crédito e débito:
-interface Operacao {
-    executar(valor: number): void;
-}
-
 // Implementação das operações de crédito e débito(composição):
-class Credito implements Operacao {
-    private conta: Conta;
-
-    constructor(conta: Conta) {
+class Credito {
+    constructor(conta) {
         this.conta = conta;
     }
-
-    public executar(valor: number): void {
+    executar(valor) {
         if (valor > 0) {
             this.conta.Saldo += valor;
             console.log(`Crédito de R$ ${valor} realizado na conta ${this.conta.Numero}. Novo saldo: R$ ${this.conta.Saldo}`);
-        } else {
+        }
+        else {
             console.log("O valor do crédito deve ser maior que zero.\n");
         }
     }
 }
-
-class Debito implements Operacao {
-    private conta: Conta;
-
-    constructor(conta: Conta) {
+class Debito {
+    constructor(conta) {
         this.conta = conta;
     }
-
-    public executar(valor: number): void {
+    executar(valor) {
         if (valor > 0) {
             if (valor <= this.conta.Saldo) {
                 this.conta.Saldo -= valor;
                 console.log(`Débito de R$ ${valor} realizado na conta ${this.conta.Numero}. Novo saldo: R$ ${this.conta.Saldo}`);
-            } else {
+            }
+            else {
                 console.log("Saldo insuficiente.\n");
             }
-        } else {
+        }
+        else {
             console.log("O valor do débito deve ser maior que zero.\n");
         }
     }
