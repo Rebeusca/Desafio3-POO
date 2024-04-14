@@ -22,7 +22,7 @@ export class Funcionario extends Pessoa {
         this.cargo.push(cargo);
     }
     listarCargos() {
-        console.log('Cargos do funcionário: ');
+        console.log(('Cargos do funcionário: ').green);
         this.cargo.forEach(cargo => {
             console.log(cargo);
         });

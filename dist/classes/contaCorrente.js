@@ -23,10 +23,10 @@ export class ContaCorrente extends Conta {
         if (valor <= this.Saldo + Number(this.Limite)) {
             this.Saldo -= valor;
             contaDestino.Saldo += valor;
-            console.log('Transferência efetuada com sucesso!');
+            console.log(('Transferência efetuada com sucesso!').cyan);
         }
         else {
-            console.log('Saldo insuficiente para transferência.');
+            console.log(('Saldo insuficiente para transferência.').red);
         }
     }
     // Método calcularSaldo:

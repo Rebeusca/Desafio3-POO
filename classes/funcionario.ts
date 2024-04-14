@@ -31,7 +31,7 @@ export class Funcionario extends Pessoa {
     }
 
     public listarCargos(): void {
-        console.log('Cargos do funcionário: ');
+        console.log(('Cargos do funcionário: ').green);
         this.cargo.forEach(cargo => {
             console.log(cargo);
         });
