@@ -17,12 +17,8 @@ export class Cliente extends Pessoa implements IUsuario {
         return this.vip;
     }
     
-    public set Vip(vip: boolean) {
-        this.vip = vip;
-    }
-    
     public get Enderecos(): Endereco[] {
-        return this.enderecos;
+        return this.enderecos.slice();
     }
     
     public set Enderecos(enderecos: Endereco[]) {
@@ -30,20 +26,26 @@ export class Cliente extends Pessoa implements IUsuario {
     }
 
     public adicionarEndereco(endereco: Endereco): void {
-        this.enderecos.push(endereco);
+        const arrayEnderecos = this.Enderecos;
+        arrayEnderecos.push(endereco);
+        this.Enderecos = arrayEnderecos;
         console.log(("Endereço adicionado ao cliente.").magenta);
     }
 
     public removerEndereco(endereco: Endereco): void {
-        this.enderecos = this.enderecos.filter(enderecoFiltrado => enderecoFiltrado !== endereco);
-        console.log(("Endereço removido.").red);
+        if (this.Enderecos.length > 1) {
+            const arrayEnderecos = this.Enderecos.filter(enderecoFiltrado => enderecoFiltrado !== endereco);
+            console.log(("Endereço removido.").red);
+        } else {
+            console.log(("O cliente deve possuir ao menos um endereço.").red);
+        }
     }
 
     // listar endereços:
     // deve imprimir no console todos os endereços vinculados àquele cliente.
     public listarEnderecos(): void {
         console.log(('Endereços do cliente: ').magenta);
-        this.enderecos.forEach(endereco => {
+        this.Enderecos.forEach(endereco => {
             console.log(endereco);
         });
     }  

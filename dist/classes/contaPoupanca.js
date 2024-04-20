@@ -1,7 +1,7 @@
 import { Conta } from "./conta.js";
 export class ContaPoupanca extends Conta {
-    constructor(numero, saldo) {
-        super(numero, saldo);
+    constructor(cliente, numero, saldo) {
+        super(numero, saldo, cliente);
     }
     // Método calcularNovoSaldo:
     // calcula o novo saldo da conta poupança.

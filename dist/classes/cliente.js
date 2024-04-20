@@ -9,28 +9,32 @@ export class Cliente extends Pessoa {
     get Vip() {
         return this.vip;
     }
-    set Vip(vip) {
-        this.vip = vip;
-    }
     get Enderecos() {
-        return this.enderecos;
+        return this.enderecos.slice();
     }
     set Enderecos(enderecos) {
         this.enderecos = enderecos;
     }
     adicionarEndereco(endereco) {
-        this.enderecos.push(endereco);
+        const arrayEnderecos = this.Enderecos;
+        arrayEnderecos.push(endereco);
+        this.Enderecos = arrayEnderecos;
         console.log(("Endereço adicionado ao cliente.").magenta);
     }
     removerEndereco(endereco) {
-        this.enderecos = this.enderecos.filter(enderecoFiltrado => enderecoFiltrado !== endereco);
-        console.log(("Endereço removido.").red);
+        if (this.Enderecos.length > 1) {
+            const arrayEnderecos = this.Enderecos.filter(enderecoFiltrado => enderecoFiltrado !== endereco);
+            console.log(("Endereço removido.").red);
+        }
+        else {
+            console.log(("O cliente deve possuir ao menos um endereço.").red);
+        }
     }
     // listar endereços:
     // deve imprimir no console todos os endereços vinculados àquele cliente.
     listarEnderecos() {
         console.log(('Endereços do cliente: ').magenta);
-        this.enderecos.forEach(endereco => {
+        this.Enderecos.forEach(endereco => {
             console.log(endereco);
         });
     }

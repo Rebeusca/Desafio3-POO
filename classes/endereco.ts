@@ -1,12 +1,12 @@
 export class Endereco {
-    private cep: String;
-    private logradouro: String;
-    private numero: String;
-    private complemento: String;
-    private cidade: String;
-    private uf: String;
+    private cep: string;
+    private logradouro: string;
+    private numero: string;
+    private complemento: string;
+    private cidade: string;
+    private uf: string;
 
-    constructor(cep: String, logradouro: String, numero: String, complemento: String, cidade: String, uf: String) {
+    constructor(cep: string, logradouro: string, numero: string, complemento: string, cidade: string, uf: string) {
         this.cep = cep;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -15,51 +15,51 @@ export class Endereco {
         this.uf = uf;
     }
 
-    get Cep(): String {
+    get Cep(): string {
         return this.cep;
     }
 
-    set Cep(cep: String) {
+    set Cep(cep: string) {
         this.cep = cep;
     }
 
-    get Logradouro(): String {
+    get Logradouro(): string {
         return this.logradouro;
     }
 
-    set Logradouro(logradouro: String) {
+    set Logradouro(logradouro: string) {
         this.logradouro = logradouro;
     }
 
-    get Numero(): String {
+    get Numero(): string {
         return this.numero;
     }
 
-    set Numero(numero: String) {
+    set Numero(numero: string) {
         this.numero = numero;
     }
 
-    get Complemento(): String {
+    get Complemento(): string {
         return this.complemento;
     }
 
-    set Complemento(complemento: String) {
+    set Complemento(complemento: string) {
         this.complemento = complemento;
     }
 
-    get Cidade(): String {
+    get Cidade(): string {
         return this.cidade;
     }
 
-    set Cidade(cidade: String) {
+    set Cidade(cidade: string) {
         this.cidade = cidade;
     }
 
-    get Uf(): String {
+    get Uf(): string {
         return this.uf;
     }
 
-    set Uf(uf: String) {
+    set Uf(uf: string) {
         this.uf = uf;
     }
 }

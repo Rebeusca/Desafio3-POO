@@ -1,10 +1,11 @@
-import {Conta} from "./conta.js";
+import { Cliente } from "./cliente.js";
+import { Conta } from "./conta.js";
 
 export class ContaCorrente extends Conta {
     private limite: number;
 
-    constructor(numero: number, saldo: number, limite: number) {
-        super(numero, saldo);
+    constructor(cliente: Cliente, numero: number, saldo: number, limite: number) {
+        super(numero, saldo, cliente);
         this.limite = limite;
     }
 
@@ -31,9 +32,9 @@ export class ContaCorrente extends Conta {
         if (valor <= this.Saldo + Number(this.Limite)) {
             this.Saldo -= valor;
             contaDestino.Saldo += valor;
-            console.log(('Transferência efetuada com sucesso!').cyan);
+            console.log(('Transferência efetuada com sucesso!\n').cyan);
         } else {
-            console.log(('Saldo insuficiente para transferência.').red);
+            console.log(('Saldo insuficiente para transferência.\n').red);
         }
     }
 
